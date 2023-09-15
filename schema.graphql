@@ -1,0 +1,17 @@
+type Query {
+  clients: Client!
+}
+
+type Events {
+  id: ID!
+  startDateTime: String!
+  title: String!
+}
+
+type Client {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  events: [Events]!
+}
