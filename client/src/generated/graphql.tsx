@@ -44,16 +44,23 @@ export type QueryFindClientByIdArgs = {
   id?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type RetrieveClientsByIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type RetrieveClientsByIdQuery = { __typename?: 'Query', findClientById?: { __typename?: 'Client', id: string, firstName: string, lastName: string, email: string, events: Array<{ __typename?: 'Events', id: string, startDateTime: string, title: string } | null> } | null };
+
 export type RetrieveClientsQueryVariables = Exact<{
   id?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type RetrieveClientsQuery = { __typename?: 'Query', findClientById?: { __typename?: 'Client', id: string, firstName: string, lastName: string, email: string, events: Array<{ __typename?: 'Events', id: string, startDateTime: string, title: string } | null> } | null, queryClientList: Array<{ __typename?: 'Client', id: string, firstName: string, lastName: string, email: string, events: Array<{ __typename?: 'Events', id: string, title: string, startDateTime: string } | null> } | null> };
+export type RetrieveClientsQuery = { __typename?: 'Query', queryClientList: Array<{ __typename?: 'Client', id: string, firstName: string, lastName: string, email: string, events: Array<{ __typename?: 'Events', id: string, title: string, startDateTime: string } | null> } | null>, findClientById?: { __typename?: 'Client', id: string, firstName: string, lastName: string, email: string, events: Array<{ __typename?: 'Events', id: string, startDateTime: string, title: string } | null> } | null };
 
 
-export const RetrieveClientsDocument = gql`
-    query RetrieveClients($id: String) {
+export const RetrieveClientsByIdDocument = gql`
+    query RetrieveClientsById($id: String) {
   findClientById(id: $id) {
     id
     firstName
@@ -65,6 +72,38 @@ export const RetrieveClientsDocument = gql`
       title
     }
   }
+}
+    `;
+
+/**
+ * __useRetrieveClientsByIdQuery__
+ *
+ * To run a query within a React component, call `useRetrieveClientsByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRetrieveClientsByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRetrieveClientsByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useRetrieveClientsByIdQuery(baseOptions?: Apollo.QueryHookOptions<RetrieveClientsByIdQuery, RetrieveClientsByIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<RetrieveClientsByIdQuery, RetrieveClientsByIdQueryVariables>(RetrieveClientsByIdDocument, options);
+      }
+export function useRetrieveClientsByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<RetrieveClientsByIdQuery, RetrieveClientsByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<RetrieveClientsByIdQuery, RetrieveClientsByIdQueryVariables>(RetrieveClientsByIdDocument, options);
+        }
+export type RetrieveClientsByIdQueryHookResult = ReturnType<typeof useRetrieveClientsByIdQuery>;
+export type RetrieveClientsByIdLazyQueryHookResult = ReturnType<typeof useRetrieveClientsByIdLazyQuery>;
+export type RetrieveClientsByIdQueryResult = Apollo.QueryResult<RetrieveClientsByIdQuery, RetrieveClientsByIdQueryVariables>;
+export const RetrieveClientsDocument = gql`
+    query RetrieveClients($id: String) {
   queryClientList {
     id
     firstName
@@ -74,6 +113,17 @@ export const RetrieveClientsDocument = gql`
       id
       title
       startDateTime
+    }
+  }
+  findClientById(id: $id) {
+    id
+    firstName
+    lastName
+    email
+    events {
+      id
+      startDateTime
+      title
     }
   }
 }

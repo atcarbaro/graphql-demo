@@ -6,17 +6,6 @@ import Loading from '../components/Loading';
 
 export const RETRIEVE_CLIENTS = gql`
     query RetrieveClients($id: String) {
-        findClientById(id: $id) {
-            id
-            firstName
-            lastName
-            email
-            events {
-                id
-                startDateTime
-                title
-            }
-        }
         queryClientList {
             id
             firstName
@@ -26,6 +15,17 @@ export const RETRIEVE_CLIENTS = gql`
                 id
                 title
                 startDateTime
+            }
+        }
+        findClientById(id: $id) {
+            id
+            firstName
+            lastName
+            email
+            events {
+                id
+                startDateTime
+                title
             }
         }
     }

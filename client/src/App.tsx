@@ -15,13 +15,12 @@ const App: React.FC = () => {
         cache: new InMemoryCache(),
     });
 
-    
     return (
         <ApolloProvider client={client}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/:id" element={<ClientDetails />} />
+                    <Route path="/id/:id" element={<ClientDetails />} />
                 </Routes>
             </BrowserRouter>
         </ApolloProvider>
