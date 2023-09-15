@@ -11,11 +11,15 @@ interface ResolverContext {
 function createResolvers(db: Db): Resolvers<ResolverContext> {
   const resolvers: Resolvers<ResolverContext> = {
     Query: {
-      clients() {
-        console.log('--------------------------------------')
-        console.log('clients--------------', db.getAllClients().map(clientTransform))
+      queryClientList() {
         return db.getAllClients().map(clientTransform);
       },
+      findClientById(_parent, args) {
+        const { id } = args;
+        const dbClient = db.getClientsById(id);
+        if (!dbClient) return null;
+        return clientTransform(dbClient);
+      }
     }
   }
   return resolvers;

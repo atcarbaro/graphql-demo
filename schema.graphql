@@ -1,8 +1,9 @@
 type Query {
-  clients: [Client]!
+  queryClientList: [Client]!
+  findClientById(id: String): Client
 }
 
-type Events {
+type Events { 
   id: ID!
   startDateTime: String!
   title: String!
