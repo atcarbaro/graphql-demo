@@ -5,13 +5,15 @@ import {
 } from './transforms';
 
 interface ResolverContext {
-  clients?: DbClient;
+  clients: DbClient;
 }
 
 function createResolvers(db: Db): Resolvers<ResolverContext> {
   const resolvers: Resolvers<ResolverContext> = {
     Query: {
       clients() {
+        console.log('--------------------------------------')
+        console.log('clients--------------', db.getAllClients().map(clientTransform))
         return db.getAllClients().map(clientTransform);
       },
     }

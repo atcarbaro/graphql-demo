@@ -1,5 +1,5 @@
 type Query {
-  clients: Client!
+  clients: [Client]!
 }
 
 type Events {
