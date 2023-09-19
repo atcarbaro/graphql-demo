@@ -33,7 +33,7 @@ export default function ClientsTable({ client }: ClientsTableProps) {
             </TableHeader>
             <TableBody>
                 {client.map((client) => (
-                <TableRow onClick={() => handleDetail(client.id)} key={client.id}>
+                <TableRow onClick={() => handleDetail(client.id)} key={client.id} className="hover:cursor-pointer">
                     <TableCell>{client.firstName}</TableCell>
                     <TableCell>{client.lastName}</TableCell>
                     <TableCell>{client.email}</TableCell>

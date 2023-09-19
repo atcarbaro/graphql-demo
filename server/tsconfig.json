@@ -1,10 +1,11 @@
 {
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "exclude": ["packages"],
   "compilerOptions": {
-    "outDir": "./dist",
-    "module": "CommonJS",
-    "baseUrl": "./src",
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true
-  },
-  "include": ["src"]
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+  }
+,
+  "allowSyntheticDefaultImports": true
 }

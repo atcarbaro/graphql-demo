@@ -11,7 +11,7 @@ import ClientDetails from './page/ClientDetails';
 
 const App: React.FC = () => {
     const client = new ApolloClient({
-        uri: 'http://localhost:3000/graphql',
+        uri: 'https://ou3pie2ynxoc55wvza34s7f6qm0rnyaz.lambda-url.us-east-1.on.aws/',
         cache: new InMemoryCache(),
     });
 
