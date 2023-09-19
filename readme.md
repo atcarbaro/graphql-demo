@@ -29,6 +29,14 @@ Then open `http://localhost:1234` and check project running for React App
 
 Open `localhost:3000/graphql` and check GraphQL project running
 
+## Runnig codegen for React changes
+
+``` 
+npm run codegen
+```
+
+This will generate a graphql.tsx file under `src/generated`
+
 ## Building for Production on each folder
 
 ```
