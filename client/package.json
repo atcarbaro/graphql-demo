@@ -47,8 +47,5 @@
     "typescript": "^5.2.2",
     "sst": "^2.25.3",
     "aws-cdk-lib": "2.95.1"
-  },
-  "overrides": {
-    "graphql": "^15.0.0"
   }
 }
