@@ -19,6 +19,9 @@ export function MyStack({ stack }: any) {
       },
     },
     handler: 'src/index.handler',
-    url: true,
+    url: {
+      cors: false
+    },
+    
   });
 }
